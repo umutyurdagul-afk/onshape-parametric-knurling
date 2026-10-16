@@ -1,39 +1,22 @@
-# ONSHAPE FEATURESCRIPT — PARAMETRIC KNURLING
+# Godronatura parametrica per Onshape
 
 [English](README.md) · [中文](README.zh-CN.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Türkçe](README.tr.md)
 
-Strumenti di zigrinatura parametrica per il design industriale, sviluppati con Onshape FeatureScript e programmazione assistita dall’IA.
+Quattro strumenti FeatureScript per creare una godronatura modificabile su parti cilindriche, quadrate e rettangolari, sviluppati per il design industriale con il supporto dell’IA alla programmazione.
 
-Il progetto esplora come un designer possa trasformare un’esigenza concreta di dettaglio superficiale in uno strumento CAD riutilizzabile. L’attenzione è rivolta alla geometria modificabile e alle variazioni controllate: confrontare presa, proporzioni visive, intento tattile e dettagli superficiali durante lo sviluppo del prodotto.
+[Umut Yurdagül](https://github.com/umutyurdagul-afk) · Design industriale
 
-## WHY ONSHAPE
+## Demo
 
-Una zigrinatura fitta genera facce, spigoli e intersezioni ripetuti. Con l’aumentare della complessità del motivo, la rigenerazione può diventare un’operazione impegnativa su una workstation locale.
+**[Guarda il video](https://github.com/umutyurdagul-afk/onshape-parametric-knurling/blob/main/media/onshape-parametric-knurling-demo.mp4)** · [Scarica MP4](https://raw.githubusercontent.com/umutyurdagul-afk/onshape-parametric-knurling/main/media/onshape-parametric-knurling-demo.mp4)
 
-L’approccio cloud-native di Onshape è particolarmente utile: la rigenerazione della geometria avviene nel cloud, mentre il designer lavora nel browser. Questo riduce la dipendenza da una singola workstation per i calcoli di modellazione e rende il lavoro accessibile da dispositivi diversi. I motivi complessi richiedono comunque calcolo; il tempo di rigenerazione dipende dalla geometria e dall’implementazione della funzione.
+Una dimostrazione del progetto in Onshape.
 
-FeatureScript trasforma la logica del motivo in una funzione personalizzata riutilizzabile, mantenendo le regolazioni nel normale flusso di modellazione di Onshape.
-
-## AI-ASSISTED DEVELOPMENT
-
-La zigrinatura è un’applicazione consolidata che può già essere modellata parametricamente. Questo caso di studio esplora come le conoscenze esistenti di modellazione parametrica possano guidare la programmazione assistita dall’IA e diventare una parte riutilizzabile del flusso di progettazione.
-
-Gli esempi parametrici esistenti costituiscono il riferimento: geometria, parametri e logica di modellazione aiutano a spiegare all’IA il comportamento desiderato. Attraverso indicazioni iterative e prove in Onshape, questa logica viene tradotta in FeatureScript.
-
-L’obiettivo è integrare più efficacemente metodi di modellazione consolidati nel flusso di progettazione. Una funzione personalizzata riutilizzabile permette al designer di regolare i parametri e confrontare le varianti, mantenendo il controllo sull’intento progettuale e valutando la geometria risultante.
-
-## DESIGN WORKFLOW
-
-1. Aggiungere il FeatureScript personalizzato a Onshape.
-2. Aprire la funzione dalla barra degli strumenti.
-3. Regolare i parametri di zigrinatura.
-4. Rigenerare e confrontare le varianti.
-
-## FEATURESCRIPT VARIANTS
+## Varianti degli strumenti
 
 Ogni file crea una nuova parte indipendente lungo l’asse Z. Usare un Feature Studio separato per ogni variante; gli script condividono nomi di enumerazioni e funzioni ausiliarie.
 
-| FILE | GEOMETRY AND COVERAGE |
+| File | Geometria e copertura |
 | --- | --- |
 | [Cilindro — Superficie completa](featurescripts/knurl-cylinder-full-surface.fs) | Cilindro senza margini non zigrinati né fasce assiali. |
 | [Cilindro — Con margini](featurescripts/knurl-cylinder-inset.fs) | Cilindro con margini superiore e inferiore e fasce assiali opzionali. |
@@ -42,11 +25,18 @@ Ogni file crea una nuova parte indipendente lungo l’asse Z. Usare un Feature S
 
 « Inset » indica un motivo arretrato rispetto ai bordi, non la zigrinatura di un foro interno.
 
-## PARAMETERS
+## Flusso di progettazione
+
+1. Aggiungere il FeatureScript personalizzato a Onshape.
+2. Aprire la funzione dalla barra degli strumenti.
+3. Regolare i parametri di zigrinatura.
+4. Rigenerare e confrontare le varianti.
+
+## Parametri
 
 I valori seguenti provengono dalle dichiarazioni dei parametri FeatureScript 2716 caricati. Sono indicati come **valore predefinito (intervallo dichiarato)**; i controlli geometrici possono limitare ulteriormente le combinazioni valide.
 
-| CONTROL | DEFAULT (DECLARED RANGE) |
+| Parametro | Valore predefinito (intervallo dichiarato) |
 | --- | --- |
 | Diametro del cilindro / larghezza del prisma | 30 mm (2–500 mm) |
 | Profondità del prisma rettangolare | 20 mm (2–500 mm); sezione quadrata attiva per impostazione predefinita |
@@ -73,10 +63,28 @@ Tutte le varianti offrono motivi a diamante, diritti e senza motivo, oltre a mot
 
 Il passo è un valore richiesto: gli script ricavano un numero intero di ripetizioni, quindi il passo effettivo può differire. I controlli sono visibili in base a stile, densità, profilo e impostazioni avanzate.
 
-## IMPLEMENTATION STATUS
+## Perché Onshape
+
+Una zigrinatura fitta genera facce, spigoli e intersezioni ripetuti. Con l’aumentare della complessità del motivo, la rigenerazione può diventare un’operazione impegnativa su una workstation locale.
+
+L’approccio cloud-native di Onshape è particolarmente utile: la rigenerazione della geometria avviene nel cloud, mentre il designer lavora nel browser. Questo riduce la dipendenza da una singola workstation per i calcoli di modellazione e rende il lavoro accessibile da dispositivi diversi. I motivi complessi richiedono comunque calcolo; il tempo di rigenerazione dipende dalla geometria e dall’implementazione della funzione.
+
+FeatureScript trasforma la logica del motivo in una funzione personalizzata riutilizzabile, mantenendo le regolazioni nel normale flusso di modellazione di Onshape.
+
+## Sviluppo assistito dall’IA
+
+Il progetto esplora come un designer possa trasformare un’esigenza concreta di dettaglio superficiale in uno strumento CAD riutilizzabile. L’attenzione è rivolta alla geometria modificabile e alle variazioni controllate: confrontare presa, proporzioni visive, intento tattile e dettagli superficiali durante lo sviluppo del prodotto.
+
+La zigrinatura è un’applicazione consolidata che può già essere modellata parametricamente. Questo caso di studio esplora come le conoscenze esistenti di modellazione parametrica possano guidare la programmazione assistita dall’IA e diventare una parte riutilizzabile del flusso di progettazione.
+
+Gli esempi parametrici esistenti costituiscono il riferimento: geometria, parametri e logica di modellazione aiutano a spiegare all’IA il comportamento desiderato. Attraverso indicazioni iterative e prove in Onshape, questa logica viene tradotta in FeatureScript.
+
+L’obiettivo è integrare più efficacemente metodi di modellazione consolidati nel flusso di progettazione. Una funzione personalizzata riutilizzabile permette al designer di regolare i parametri e confrontare le varianti, mantenendo il controllo sull’intento progettuale e valutando la geometria risultante.
+
+## Stato dell’implementazione
 
 Il sorgente caricato è conservato senza modifiche, inclusi gli identificatori delle funzioni e la versione 2716 della libreria. I controlli del repository confermano l’organizzazione dei file e la documentazione dei parametri; nell’ambito di questo aggiornamento non sono state eseguite compilazioni o rigenerazioni in Onshape.
 
-## DESIGN EVALUATION
+## Valutazione del design
 
 Valutare ogni variante per presa, carattere tattile, qualità degli spigoli e coerenza con forma e materiale del prodotto. Verificare l’idoneità alla produzione rispetto al processo e alle dimensioni previsti.

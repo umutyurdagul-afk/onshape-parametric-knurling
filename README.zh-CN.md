@@ -1,39 +1,22 @@
-# ONSHAPE FEATURESCRIPT — PARAMETRIC KNURLING
+# Onshape 参数化滚花
 
 [English](README.md) · [中文](README.zh-CN.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Türkçe](README.tr.md)
 
-面向工业设计的参数化滚花工具，使用 Onshape FeatureScript 和 AI 辅助编程开发。
+四个面向工业设计的 FeatureScript 工具，用于在圆柱、正方形和矩形截面零件上生成可编辑的滚花几何，采用 AI 辅助编程开发。
 
-本项目探索设计师如何将实际的表面细节设计需求转化为可重复使用的 CAD 工具。重点是可编辑的几何与可控的变化：在产品开发过程中比较握持特性、视觉比例、触觉意图和表面细节。
+[Umut Yurdagül](https://github.com/umutyurdagul-afk) · 工业设计
 
-## WHY ONSHAPE
+## 演示
 
-密集的滚花会产生大量重复的面、边和交线。随着图案复杂度增加，在本地工作站上重新生成模型可能需要较多计算资源。
+**[观看演示视频](https://github.com/umutyurdagul-afk/onshape-parametric-knurling/blob/main/media/onshape-parametric-knurling-demo.mp4)** · [下载 MP4](https://raw.githubusercontent.com/umutyurdagul-afk/onshape-parametric-knurling/main/media/onshape-parametric-knurling-demo.mp4)
 
-Onshape 的云原生架构在这里尤其有价值：几何重新生成在云端进行，设计师通过浏览器工作。这降低了建模计算对单台工作站的依赖，也便于在不同设备上使用同一工作流程。复杂图案仍然需要计算；重新生成时间取决于几何和特征的实现方式。
+项目在 Onshape 中的演示视频。
 
-FeatureScript 将图案逻辑封装为可重复使用的自定义特征，使参数调整保持在日常 Onshape 建模流程中。
-
-## AI-ASSISTED DEVELOPMENT
-
-滚花是一种成熟的应用，已经可以通过参数化方式建模。本案例研究探索如何利用现有参数化建模知识指导 AI 辅助编程，并将其转化为设计流程中可重复使用的工具。
-
-现有参数化实例作为参考：其中的几何、参数和建模逻辑有助于向 AI 说明预期行为。通过反复指导和在 Onshape 中测试，将这些逻辑转化为 FeatureScript。
-
-目标是更高效地将成熟建模方法融入设计流程。可重复使用的自定义特征让设计师能够调整参数、比较不同方案，同时掌控设计意图并评估生成的几何。
-
-## DESIGN WORKFLOW
-
-1. 将自定义 FeatureScript 添加到 Onshape。
-2. 从工具栏打开该特征。
-3. 调整滚花参数。
-4. 重新生成模型并比较不同方案。
-
-## FEATURESCRIPT VARIANTS
+## 工具变体
 
 每个文件都会沿 Z 轴创建一个新的独立零件。每种变体应使用单独的 Feature Studio；这些脚本使用相同的枚举和辅助函数名称。
 
-| FILE | GEOMETRY AND COVERAGE |
+| 文件 | 几何和覆盖范围 |
 | --- | --- |
 | [圆柱 — 全表面](featurescripts/knurl-cylinder-full-surface.fs) | 不含未滚花边距或轴向分带的圆柱。 |
 | [圆柱 — 留边](featurescripts/knurl-cylinder-inset.fs) | 具有顶部和底部边距，并支持可选轴向分带的圆柱。 |
@@ -42,11 +25,18 @@ FeatureScript 将图案逻辑封装为可重复使用的自定义特征，使参
 
 “Inset”指图案与边缘之间保留距离，而不是对内孔进行滚花。
 
-## PARAMETERS
+## 设计流程
+
+1. 将自定义 FeatureScript 添加到 Onshape。
+2. 从工具栏打开该特征。
+3. 调整滚花参数。
+4. 重新生成模型并比较不同方案。
+
+## 参数
 
 以下数值取自已上传的 FeatureScript 2716 参数声明。格式为**默认值（声明范围）**；几何检查可能进一步限制有效参数组合。
 
-| CONTROL | DEFAULT (DECLARED RANGE) |
+| 参数 | 默认值（声明范围） |
 | --- | --- |
 | 圆柱直径 / 棱柱宽度 | 30 mm (2–500 mm) |
 | 矩形截面棱柱深度 | 20 mm（2–500 mm）；默认使用正方形截面 |
@@ -73,10 +63,28 @@ FeatureScript 将图案逻辑封装为可重复使用的自定义特征，使参
 
 节距是目标值：脚本会计算整数重复次数，因此实际节距可能不同。控件会根据样式、密度、轮廓和高级设置有条件地显示。
 
-## IMPLEMENTATION STATUS
+## 为什么选择 Onshape
+
+密集的滚花会产生大量重复的面、边和交线。随着图案复杂度增加，在本地工作站上重新生成模型可能需要较多计算资源。
+
+Onshape 的云原生架构在这里尤其有价值：几何重新生成在云端进行，设计师通过浏览器工作。这降低了建模计算对单台工作站的依赖，也便于在不同设备上使用同一工作流程。复杂图案仍然需要计算；重新生成时间取决于几何和特征的实现方式。
+
+FeatureScript 将图案逻辑封装为可重复使用的自定义特征，使参数调整保持在日常 Onshape 建模流程中。
+
+## AI 辅助开发
+
+本项目探索设计师如何将实际的表面细节设计需求转化为可重复使用的 CAD 工具。重点是可编辑的几何与可控的变化：在产品开发过程中比较握持特性、视觉比例、触觉意图和表面细节。
+
+滚花是一种成熟的应用，已经可以通过参数化方式建模。本案例研究探索如何利用现有参数化建模知识指导 AI 辅助编程，并将其转化为设计流程中可重复使用的工具。
+
+现有参数化实例作为参考：其中的几何、参数和建模逻辑有助于向 AI 说明预期行为。通过反复指导和在 Onshape 中测试，将这些逻辑转化为 FeatureScript。
+
+目标是更高效地将成熟建模方法融入设计流程。可重复使用的自定义特征让设计师能够调整参数、比较不同方案，同时掌控设计意图并评估生成的几何。
+
+## 实现状态
 
 上传的源代码保持不变，包括特征标识符和 2716 库版本。仓库检查确认了文件组织与参数文档；此次仓库更新未在 Onshape 中执行编译或模型重新生成。
 
-## DESIGN EVALUATION
+## 设计评估
 
 根据握持感、触觉特征、边缘质量以及与产品形态和材料的一致性评估各方案。制造适用性应结合预定工艺和尺寸进行评估。

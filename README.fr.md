@@ -1,39 +1,22 @@
-# ONSHAPE FEATURESCRIPT — PARAMETRIC KNURLING
+# Moletage paramétrique pour Onshape
 
 [English](README.md) · [中文](README.zh-CN.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Türkçe](README.tr.md)
 
-Outils de moletage paramétrique pour le design industriel, développés avec Onshape FeatureScript et une aide de l’IA à la programmation.
+Quatre outils FeatureScript pour créer un moletage modifiable sur des pièces cylindriques, carrées et rectangulaires, développés pour le design industriel avec une aide de l’IA à la programmation.
 
-Ce projet explore comment un designer peut transformer un besoin concret de détail de surface en outil CAO réutilisable. Il privilégie une géométrie modifiable et des variations contrôlées pour comparer la prise en main, les proportions visuelles, l’intention tactile et les détails de surface pendant le développement produit.
+[Umut Yurdagül](https://github.com/umutyurdagul-afk) · Design industriel
 
-## WHY ONSHAPE
+## Démonstration
 
-Un moletage dense génère de nombreuses faces, arêtes et intersections répétées. Lorsque le motif se complexifie, la régénération peut devenir une opération exigeante sur un poste de travail local.
+**[Regarder la vidéo](https://github.com/umutyurdagul-afk/onshape-parametric-knurling/blob/main/media/onshape-parametric-knurling-demo.mp4)** · [Télécharger le MP4](https://raw.githubusercontent.com/umutyurdagul-afk/onshape-parametric-knurling/main/media/onshape-parametric-knurling-demo.mp4)
 
-L’architecture cloud-native d’Onshape est particulièrement intéressante ici : la géométrie est régénérée dans le cloud, tandis que le designer travaille dans un navigateur. Cela réduit la dépendance à un seul poste pour les calculs de modélisation et permet de travailler depuis différents appareils. Les motifs complexes nécessitent toujours des calculs ; le temps de régénération dépend de la géométrie et de l’implémentation de la fonction.
+Une démonstration du projet dans Onshape.
 
-FeatureScript transforme la logique du motif en fonction personnalisée réutilisable, dont les réglages restent intégrés au processus habituel de modélisation Onshape.
-
-## AI-ASSISTED DEVELOPMENT
-
-Le moletage est une application établie qui peut déjà être modélisée de façon paramétrique. Cette étude de cas explore comment les connaissances existantes en modélisation paramétrique peuvent guider la programmation assistée par IA et devenir une composante réutilisable du processus de conception.
-
-Les exemples paramétriques existants servent de référence : leur géométrie, leurs paramètres et leur logique de modélisation aident à expliquer à l’IA le comportement attendu. Par des instructions itératives et des essais dans Onshape, cette logique est traduite en FeatureScript.
-
-L’objectif est d’intégrer plus efficacement les méthodes de modélisation établies au processus de conception. Une fonction personnalisée réutilisable permet au designer de régler les paramètres et de comparer les variantes tout en maîtrisant l’intention de conception et en évaluant la géométrie obtenue.
-
-## DESIGN WORKFLOW
-
-1. Ajouter le FeatureScript personnalisé à Onshape.
-2. Ouvrir la fonction depuis la barre d’outils.
-3. Régler les paramètres de moletage.
-4. Régénérer et comparer les variantes.
-
-## FEATURESCRIPT VARIANTS
+## Variantes des outils
 
 Chaque fichier crée une nouvelle pièce indépendante suivant l’axe Z. Utiliser un Feature Studio distinct pour chaque variante ; les scripts partagent des noms d’énumérations et de fonctions auxiliaires.
 
-| FILE | GEOMETRY AND COVERAGE |
+| Fichier | Géométrie et couverture |
 | --- | --- |
 | [Cylindre — Surface complète](featurescripts/knurl-cylinder-full-surface.fs) | Cylindre sans marges lisses ni bandes axiales. |
 | [Cylindre — En retrait](featurescripts/knurl-cylinder-inset.fs) | Cylindre avec marges supérieure et inférieure et bandes axiales facultatives. |
@@ -42,11 +25,18 @@ Chaque fichier crée une nouvelle pièce indépendante suivant l’axe Z. Utilis
 
 « Inset » désigne un motif en retrait des bords, et non un moletage d’alésage intérieur.
 
-## PARAMETERS
+## Processus de conception
+
+1. Ajouter le FeatureScript personnalisé à Onshape.
+2. Ouvrir la fonction depuis la barre d’outils.
+3. Régler les paramètres de moletage.
+4. Régénérer et comparer les variantes.
+
+## Paramètres
 
 Les valeurs suivantes proviennent des déclarations de paramètres FeatureScript 2716 fournies. Elles sont présentées sous la forme **valeur par défaut (plage déclarée)** ; les contrôles géométriques peuvent limiter davantage les combinaisons valides.
 
-| CONTROL | DEFAULT (DECLARED RANGE) |
+| Paramètre | Valeur par défaut (plage déclarée) |
 | --- | --- |
 | Diamètre du cylindre / largeur du prisme | 30 mm (2–500 mm) |
 | Profondeur du prisme rectangulaire | 20 mm (2–500 mm) ; section carrée activée par défaut |
@@ -73,10 +63,28 @@ Toutes les variantes proposent des motifs diamant, droits et sans motif, ainsi q
 
 Le pas est une valeur demandée : les scripts calculent un nombre entier de répétitions, le pas réel peut donc différer. L’affichage des commandes dépend du style, de la densité, du profil et des réglages avancés.
 
-## IMPLEMENTATION STATUS
+## Pourquoi Onshape
+
+Un moletage dense génère de nombreuses faces, arêtes et intersections répétées. Lorsque le motif se complexifie, la régénération peut devenir une opération exigeante sur un poste de travail local.
+
+L’architecture cloud-native d’Onshape est particulièrement intéressante ici : la géométrie est régénérée dans le cloud, tandis que le designer travaille dans un navigateur. Cela réduit la dépendance à un seul poste pour les calculs de modélisation et permet de travailler depuis différents appareils. Les motifs complexes nécessitent toujours des calculs ; le temps de régénération dépend de la géométrie et de l’implémentation de la fonction.
+
+FeatureScript transforme la logique du motif en fonction personnalisée réutilisable, dont les réglages restent intégrés au processus habituel de modélisation Onshape.
+
+## Développement assisté par IA
+
+Ce projet explore comment un designer peut transformer un besoin concret de détail de surface en outil CAO réutilisable. Il privilégie une géométrie modifiable et des variations contrôlées pour comparer la prise en main, les proportions visuelles, l’intention tactile et les détails de surface pendant le développement produit.
+
+Le moletage est une application établie qui peut déjà être modélisée de façon paramétrique. Cette étude de cas explore comment les connaissances existantes en modélisation paramétrique peuvent guider la programmation assistée par IA et devenir une composante réutilisable du processus de conception.
+
+Les exemples paramétriques existants servent de référence : leur géométrie, leurs paramètres et leur logique de modélisation aident à expliquer à l’IA le comportement attendu. Par des instructions itératives et des essais dans Onshape, cette logique est traduite en FeatureScript.
+
+L’objectif est d’intégrer plus efficacement les méthodes de modélisation établies au processus de conception. Une fonction personnalisée réutilisable permet au designer de régler les paramètres et de comparer les variantes tout en maîtrisant l’intention de conception et en évaluant la géométrie obtenue.
+
+## État de l’implémentation
 
 Le code source fourni est conservé sans modification, y compris les identifiants des fonctions et la version 2716 de la bibliothèque. Les vérifications du dépôt confirment l’organisation des fichiers et la documentation des paramètres ; aucune compilation ni régénération dans Onshape n’a été effectuée dans le cadre de cette mise à jour.
 
-## DESIGN EVALUATION
+## Évaluation du design
 
 Évaluer chaque variante selon la prise en main, le caractère tactile, la qualité des arêtes et la cohérence avec la forme et le matériau du produit. Évaluer l’aptitude à la fabrication selon le procédé et les dimensions prévus.

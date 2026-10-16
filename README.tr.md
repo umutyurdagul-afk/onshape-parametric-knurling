@@ -1,39 +1,22 @@
-# ONSHAPE FEATURESCRIPT — PARAMETRIC KNURLING
+# Onshape için Parametrik Tırtıl
 
 [English](README.md) · [中文](README.zh-CN.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Türkçe](README.tr.md)
 
-Endüstriyel tasarım için Onshape FeatureScript ve AI destekli kodlama ile geliştirilen parametrik tırtıl oluşturma araçları.
+Silindirik, kare ve dikdörtgen parçalar için düzenlenebilir tırtıl geometrisi üreten dört FeatureScript aracı. Endüstriyel tasarım için AI destekli kodlama ile geliştirildi.
 
-Bu proje, tasarımcının pratik bir yüzey detaylandırma ihtiyacını yeniden kullanılabilir bir CAD aracına dönüştürmesini araştırır. Odak noktası düzenlenebilir geometri ve kontrollü varyasyonlardır: ürün geliştirme sırasında tutuş karakterini, görsel oranları, dokunsal amacı ve yüzey detaylarını karşılaştırmak.
+[Umut Yurdagül](https://github.com/umutyurdagul-afk) · Endüstriyel Tasarım
 
-## WHY ONSHAPE
+## Demo
 
-Yoğun tırtıl desenleri tekrarlanan yüzeyler, kenarlar ve kesişimler oluşturur. Desen karmaşıklaştıkça modeli yeniden hesaplamak yerel bir iş istasyonunda ağır bir işleme dönüşebilir.
+**[Tanıtım videosunu izle](https://github.com/umutyurdagul-afk/onshape-parametric-knurling/blob/main/media/onshape-parametric-knurling-demo.mp4)** · [MP4 indir](https://raw.githubusercontent.com/umutyurdagul-afk/onshape-parametric-knurling/main/media/onshape-parametric-knurling-demo.mp4)
 
-Onshape’ın bulut tabanlı mimarisi burada değerlidir: geometri bulutta yeniden hesaplanırken tasarımcı tarayıcı üzerinden çalışır. Bu yaklaşım, modelleme hesaplarında tek bir iş istasyonuna bağımlılığı azaltır ve farklı cihazlardan çalışmayı mümkün kılar. Karmaşık desenler yine hesaplama gerektirir; süre geometriye ve özelliğin uygulanışına bağlıdır.
+Projenin Onshape içindeki kullanımını gösteren video.
 
-FeatureScript, desen mantığını yeniden kullanılabilir bir özel özelliğe dönüştürür; ayarlamalar normal Onshape modelleme sürecinde kalır.
-
-## AI-ASSISTED DEVELOPMENT
-
-Tırtıl oluşturma, hâlihazırda parametrik olarak modellenebilen yerleşik bir uygulamadır. Bu vaka çalışması, mevcut parametrik modelleme bilgisinin AI destekli kodlamayı nasıl yönlendirebileceğini ve tasarım sürecinin yeniden kullanılabilir bir parçasına nasıl dönüşebileceğini araştırır.
-
-Mevcut parametrik örnekler referans sağlar: geometri, parametreler ve modelleme mantığı, beklenen davranışı AI’a anlatmaya yardımcı olur. Yinelemeli yönlendirme ve Onshape içindeki denemelerle bu mantık FeatureScript’e dönüştürülür.
-
-Amaç, yerleşik modelleme yöntemlerini tasarım sürecine daha verimli dahil etmektir. Yeniden kullanılabilir bir özel özellik, tasarımcının tasarım niyetini kontrol ederek ve oluşan geometriyi değerlendirerek parametreleri ayarlamasını ve alternatifleri karşılaştırmasını sağlar.
-
-## DESIGN WORKFLOW
-
-1. Özel FeatureScript’i Onshape’a ekle.
-2. Özelliği araç çubuğundan aç.
-3. Tırtıl parametrelerini ayarla.
-4. Modeli yeniden hesapla ve varyasyonları karşılaştır.
-
-## FEATURESCRIPT VARIANTS
+## Araç sürümleri
 
 Her dosya Z ekseni boyunca yeni, bağımsız bir parça oluşturur. Her sürüm için ayrı bir Feature Studio kullan; betikler aynı enum ve yardımcı işlev adlarını paylaşır.
 
-| FILE | GEOMETRY AND COVERAGE |
+| Dosya | Geometri ve kapsam |
 | --- | --- |
 | [Silindir — Tam Yüzey](featurescripts/knurl-cylinder-full-surface.fs) | Desensiz kenar boşluğu veya eksenel bant içermeyen silindir. |
 | [Silindir — Inset](featurescripts/knurl-cylinder-inset.fs) | Üst/alt kenar boşlukları ve isteğe bağlı eksenel bantlar içeren silindir. |
@@ -42,11 +25,18 @@ Her dosya Z ekseni boyunca yeni, bağımsız bir parça oluşturur. Her sürüm 
 
 “Inset”, iç deliğin tırtıllanmasını değil, desenin kenarlardan içeride kalmasını ifade eder.
 
-## PARAMETERS
+## Tasarım iş akışı
+
+1. Özel FeatureScript’i Onshape’a ekle.
+2. Özelliği araç çubuğundan aç.
+3. Tırtıl parametrelerini ayarla.
+4. Modeli yeniden hesapla ve varyasyonları karşılaştır.
+
+## Parametreler
 
 Aşağıdaki değerler yüklenen FeatureScript 2716 parametre tanımlarından alınmıştır. Değerler **varsayılan (tanımlanan aralık)** şeklindedir; geometri kontrolleri geçerli kombinasyonları ayrıca sınırlayabilir.
 
-| CONTROL | DEFAULT (DECLARED RANGE) |
+| Parametre | Varsayılan (tanımlı aralık) |
 | --- | --- |
 | Silindir çapı / prizma genişliği | 30 mm (2–500 mm) |
 | Dikdörtgen prizma derinliği | 20 mm (2–500 mm); varsayılan olarak kare kesit |
@@ -73,10 +63,28 @@ Tüm sürümlerde baklava, düz ve desensiz seçenekler vardır; silindirlerde h
 
 Adım, istenen değerdir: betikler tam sayılı tekrar sayısı hesapladığı için gerçek adım farklı olabilir. Kontroller; desen, yoğunluk, profil ve gelişmiş ayarlara bağlı olarak görünür.
 
-## IMPLEMENTATION STATUS
+## Neden Onshape?
+
+Yoğun tırtıl desenleri tekrarlanan yüzeyler, kenarlar ve kesişimler oluşturur. Desen karmaşıklaştıkça modeli yeniden hesaplamak yerel bir iş istasyonunda ağır bir işleme dönüşebilir.
+
+Onshape’ın bulut tabanlı mimarisi burada değerlidir: geometri bulutta yeniden hesaplanırken tasarımcı tarayıcı üzerinden çalışır. Bu yaklaşım, modelleme hesaplarında tek bir iş istasyonuna bağımlılığı azaltır ve farklı cihazlardan çalışmayı mümkün kılar. Karmaşık desenler yine hesaplama gerektirir; süre geometriye ve özelliğin uygulanışına bağlıdır.
+
+FeatureScript, desen mantığını yeniden kullanılabilir bir özel özelliğe dönüştürür; ayarlamalar normal Onshape modelleme sürecinde kalır.
+
+## AI destekli geliştirme
+
+Bu proje, tasarımcının pratik bir yüzey detaylandırma ihtiyacını yeniden kullanılabilir bir CAD aracına dönüştürmesini araştırır. Odak noktası düzenlenebilir geometri ve kontrollü varyasyonlardır: ürün geliştirme sırasında tutuş karakterini, görsel oranları, dokunsal amacı ve yüzey detaylarını karşılaştırmak.
+
+Tırtıl oluşturma, hâlihazırda parametrik olarak modellenebilen yerleşik bir uygulamadır. Bu vaka çalışması, mevcut parametrik modelleme bilgisinin AI destekli kodlamayı nasıl yönlendirebileceğini ve tasarım sürecinin yeniden kullanılabilir bir parçasına nasıl dönüşebileceğini araştırır.
+
+Mevcut parametrik örnekler referans sağlar: geometri, parametreler ve modelleme mantığı, beklenen davranışı AI’a anlatmaya yardımcı olur. Yinelemeli yönlendirme ve Onshape içindeki denemelerle bu mantık FeatureScript’e dönüştürülür.
+
+Amaç, yerleşik modelleme yöntemlerini tasarım sürecine daha verimli dahil etmektir. Yeniden kullanılabilir bir özel özellik, tasarımcının tasarım niyetini kontrol ederek ve oluşan geometriyi değerlendirerek parametreleri ayarlamasını ve alternatifleri karşılaştırmasını sağlar.
+
+## Uygulama durumu
 
 Yüklenen kaynak kod, özellik tanımlayıcıları ve 2716 kütüphane sürümü dahil değiştirilmeden korunmuştur. Repo kontrolleri dosya düzenini ve parametre belgelerini doğrular; bu repo güncellemesi kapsamında Onshape’ta derleme veya yeniden hesaplama yapılmamıştır.
 
-## DESIGN EVALUATION
+## Tasarım değerlendirmesi
 
 Her varyasyonu tutuş, dokunsal karakter, kenar kalitesi ve ürünün biçimiyle ve malzemesiyle uyumu açısından değerlendir. Üretime uygunluğu hedeflenen işlem ve ölçülere göre incele.
