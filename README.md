@@ -1,10 +1,12 @@
-# Onshape FeatureScript — Parametric Knurling
+# ONSHAPE FEATURESCRIPT — PARAMETRIC KNURLING
+
+[English](README.md) · [中文](README.zh-CN.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Türkçe](README.tr.md)
 
 Parametric knurling for industrial design, built with Onshape FeatureScript and AI-assisted coding.
 
 This project explores how a designer can turn a practical surface-detailing need into a reusable CAD tool. The focus is on editable geometry and controlled variation: comparing grip character, visual proportion, tactile intent, and surface detail during product development.
 
-## Why Onshape
+## WHY ONSHAPE
 
 Dense knurling creates repeated faces, edges, and intersections. As the pattern becomes more complex, regeneration can become a demanding part of the modeling process on a local workstation.
 
@@ -12,7 +14,7 @@ Onshape's cloud-native approach is particularly valuable here: geometry regenera
 
 FeatureScript brings the pattern logic into a reusable custom feature, keeping adjustments within the normal Onshape modeling workflow.
 
-## AI-Assisted Development
+## AI-ASSISTED DEVELOPMENT
 
 Knurling is an established application that can already be modeled parametrically. This case study explores how existing parametric modeling knowledge can guide AI-assisted coding and become a reusable part of the design workflow.
 
@@ -20,14 +22,14 @@ Existing parametric examples provide the reference: their geometry, parameters, 
 
 The aim is to bring established modeling methods into the design workflow more efficiently. A reusable custom feature lets the designer adjust parameters and compare variations while keeping control over the design intent and evaluating the resulting geometry.
 
-## Design Workflow
+## DESIGN WORKFLOW
 
 1. Add the custom FeatureScript to Onshape.
 2. Open the feature from the toolbar.
 3. Adjust the knurling parameters.
 4. Regenerate and compare variations.
 
-## FeatureScript Variants
+## FEATURESCRIPT VARIANTS
 
 Each file creates a new independent part along the Z axis. Use a separate Feature Studio for each variant; the scripts share enum and helper names.
 
@@ -40,7 +42,7 @@ Each file creates a new independent part along the Z axis. Use a separate Featur
 
 “Inset” refers to a pattern set back from the edges, rather than knurling an internal bore.
 
-## Parameters
+## PARAMETERS
 
 The following values come from the uploaded FeatureScript 2716 parameter declarations. Values are shown as **default (declared range)**; geometry checks can further restrict valid combinations.
 
@@ -71,10 +73,10 @@ All variants offer diamond, straight, and unpatterned styles, plus helical style
 
 Pitch is a requested value: the scripts derive an integer repeat count, so actual pitch can differ. Controls appear conditionally according to style, density, profile, and advanced settings.
 
-## Implementation Status
+## IMPLEMENTATION STATUS
 
 The uploaded source is preserved unchanged, including feature identifiers and library version 2716. Repository checks confirm the file organization and parameter documentation; compilation and regeneration in Onshape have not been performed as part of this repository update.
 
-## Design Evaluation
+## DESIGN EVALUATION
 
 Evaluate each variation for grip, tactile character, edge quality, and consistency with the product's form and material. Manufacturing suitability should be assessed for the intended process and dimensions.
