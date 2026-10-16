@@ -14,9 +14,11 @@ FeatureScript brings the pattern logic into a reusable custom feature, keeping a
 
 ## AI-Assisted Development
 
-The project combines industrial design intent, CAD experimentation, and AI-assisted coding. AI helps translate design requirements into FeatureScript and supports iteration on the implementation; the designer defines the intended behavior and evaluates the resulting geometry in Onshape.
+Knurling is an established application that can already be modeled parametrically. This case study explores how existing parametric modeling knowledge can guide AI-assisted coding and become a reusable part of the design workflow.
 
-The value extends beyond generating code: a designer can build a tool around a specific product-development need, then use it to explore surface alternatives without manually rebuilding the pattern each time.
+Existing parametric examples provide the reference: their geometry, parameters, and modeling logic help explain the intended behavior to AI. Through iterative guidance and testing in Onshape, that logic is translated into FeatureScript.
+
+The aim is to bring established modeling methods into the design workflow more efficiently. A reusable custom feature lets the designer adjust parameters and compare variations while keeping control over the design intent and evaluating the resulting geometry.
 
 ## Design Workflow
 
