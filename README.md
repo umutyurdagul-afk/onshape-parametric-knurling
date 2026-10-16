@@ -27,9 +27,53 @@ The aim is to bring established modeling methods into the design workflow more e
 3. Adjust the knurling parameters.
 4. Regenerate and compare variations.
 
-## Source and Parameters
+## FeatureScript Variants
 
-The FeatureScript source has not yet been added to this repository. The exact parameter names, units, defaults, and supported ranges will be documented against that source once it is available.
+Each file creates a new independent part along the Z axis. Use a separate Feature Studio for each variant; the scripts share enum and helper names.
+
+| File | Geometry and coverage |
+| --- | --- |
+| [Cylinder — Full Surface](featurescripts/knurl-cylinder-full-surface.fs) | Cylinder with no unknurled margins or axial bands. |
+| [Cylinder — Inset](featurescripts/knurl-cylinder-inset.fs) | Cylinder with top/bottom margins and optional axial bands. |
+| [Prism — Full Surface](featurescripts/knurl-prism-full-surface.fs) | Square or rectangular prism, patterned on all four lateral faces. |
+| [Prism — Inset](featurescripts/knurl-prism-inset.fs) | Square or rectangular prism with top, bottom, and side borders. |
+
+“Inset” refers to a pattern set back from the edges, rather than knurling an internal bore.
+
+## Parameters
+
+The following values come from the uploaded FeatureScript 2716 parameter declarations. Values are shown as **default (declared range)**; geometry checks can further restrict valid combinations.
+
+| Control | Default (declared range) |
+| --- | --- |
+| Cylinder diameter / prism width | 30 mm (2–500 mm) |
+| Rectangular prism depth | 20 mm (2–500 mm); square section enabled by default |
+| Body length / prism height | 40 mm (2–1000 mm) |
+| Cylinder groove count, per direction | 32 (8–120) |
+| Prism developed-perimeter groove count | 48 (8–240), rounded to a multiple of four |
+| Requested pitch, as an alternative to count | 2.5 mm (0.2–50 mm) |
+| Groove depth | 0.45 mm (0.02–10 mm) |
+| Helix / diagonal angle from the body axis | 30° (5–65°) |
+| Included V angle | 120° (30–150°) |
+| Crest land ratio, as an alternative to V angle | 0.2 (0.05–0.85) |
+| End chamfer offset / fillet radius | 0.8 mm (0.01–100 mm) |
+| Chamfer angle | 45° (10–80°) |
+| Prism corner fillet radius / chamfer offset | 0.8 mm (0.01–100 mm) |
+| Inset cylinder top / bottom margins | 2 mm (0–500 mm) |
+| Inset prism top / bottom / side borders | 2 mm (0–200 mm) |
+| Inset cylinder axial bands | 1 (1–6); gap 3 mm (0.1–100 mm) |
+| Pattern phase | 0° (0–360°) |
+| Groove root flat width | 0 mm (0–5 mm) |
+| Optional crest / root rounding radius | 0.05 mm (0.005–2 mm) |
+| Cutter overrun, full-surface variants and inset prism | 1 mm (0–50 mm) at each end |
+
+All variants offer diamond, straight, and unpatterned styles, plus helical styles for cylinders or diagonal styles for prisms. Knurl modes are cut, raised, or half raised / half cut. Size references distinguish nominal body dimensions from maximum outside dimensions. End treatments can be sharp, chamfered, or filleted.
+
+Pitch is a requested value: the scripts derive an integer repeat count, so actual pitch can differ. Controls appear conditionally according to style, density, profile, and advanced settings.
+
+## Implementation Status
+
+The uploaded source is preserved unchanged, including feature identifiers and library version 2716. Repository checks confirm the file organization and parameter documentation; compilation and regeneration in Onshape have not been performed as part of this repository update.
 
 ## Design Evaluation
 
